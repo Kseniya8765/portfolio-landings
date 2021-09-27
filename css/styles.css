@@ -3,8 +3,13 @@
   margin: 0 auto;
   padding: 0 10px;
 }
+html {
+  scroll-behavior: smooth;
+}
 header {
-  background-color: #e9e9e9;
+  background-color: hsl(240, 7%, 65%);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .logo img {
   width: 91px;
@@ -22,8 +27,8 @@ nav {
 nav a {
   text-decoration: none;
   color: #191919;
-  font-family: Montserrat;
-  font-size: 12px;
+  font-family: "Montserrat";
+  font-size: 16px;
   font-weight: 500;
   font-style: normal;
   letter-spacing: normal;
@@ -31,7 +36,18 @@ nav a {
   margin-right: 40px;
 }
 nav a:hover {
-  color: #10c9c3;
+  color: #467dc4;
+}
+.text-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.text-container img {
+  width: 200px;
+  height: 300px;
+  margin-bottom: 50px;
 }
 .text {
   max-width: 555px;
@@ -40,28 +56,51 @@ nav a:hover {
 }
 .text h1 {
   color: #1d1d1d;
-  font-family: Montserrat;
+  font-family: "Montserrat";
   font-size: 28px;
   font-weight: 500;
 }
 .text p {
+  font-family: "Montserrat";
+  font-size: 18px;
   margin-top: 32px;
   margin-bottom: 39px;
-  letter-spacing: 0.09px;
-  color: darkslategrey;
+  letter-spacing: 1px;
+  line-height: 20px;
+  color: #1d1d1d;
 }
 .email {
   display: block;
   width: 180px;
   height: 54px;
-  background-color: #10c9c3;
+  background-color: #467dc4;
   text-decoration: none;
   color: #ffffff;
   font-family: Montserrat;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 54px;
   text-align: center;
+  position: relative;
+  transition: all 500ms ease;
+}
+.email:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 1s ease;
+}
+.email:hover:before {
+  width: 100%;
+}
+.email:active {
+  background: rgba(201, 199, 199, 0);
+  color: hsl(200, 100%, 85%);
+  box-shadow: inset 0 0 0 3px hsl(200, 53%, 54%);
 }
 .about-h3 {
   height: 22px;
@@ -78,6 +117,7 @@ nav a:hover {
   text-align: center;
   color: darkslategrey;
   padding-top: 41px;
+  padding-bottom: 20px;
   margin: 0 auto;
 }
 .about-signature img {
@@ -89,58 +129,51 @@ nav a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-.skills {
-  max-width: 683px;
-  max-height: 570px;
-  background-color: #f8f9f9;
-  margin-top: 100px;
-  padding-bottom: 100px;
-}
-.skills h3 {
-  width: 271px;
-  color: #171717;
-  font-family: Montserrat;
-  font-size: 30px;
+.resume {
+  display: block;
+  width: 180px;
+  height: 54px;
+  background-color: #fafafa;
+  border: 2px solid #467dc4;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  font-family: "Montserrat";
+  font-size: 14px;
   font-weight: 500;
-  padding-top: 134px;
-  margin-left: 100px;
-  margin-bottom: 39px;
+  line-height: 54px;
+  text-align: center;
+  position: relative;
+  transition: all 500ms ease;
+  margin: 0 auto;
 }
-.skills h5 {
-  width: 144px;
-  color: #000000;
-  font-family: Montserrat;
-  font-size: 12px;
-  font-weight: 500;
-  margin-left: 100px;
-  margin-bottom: 19px;
+.resume:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 54px;
+  background: rgba(235, 233, 233, 0.3);
+  transition: all 1s ease;
 }
-.skills-line {
-  width: 500px;
-  height: 3px;
-  background-color: #d8d8d8;
-  margin-left: 100px;
-  margin-bottom: 41px;
+.resume:hover:before {
+  width: 100%;
 }
-.skills-line--lvl1 {
-  width: 436px;
-  height: 3px;
-  background-color: #10c9c3;
+.resume:active {
+  background: rgba(201, 199, 199, 0);
+  color: hsl(200, 100%, 85%);
+  box-shadow: inset 0 0 0 3px hsl(200, 53%, 54%);
 }
-.skills-line--lvl2 {
-  width: 336px;
-  height: 3px;
-  background-color: #10c9c3;
+
+#skills {
+  transition: all 0.2s ease-in-out;
+  transform: translate3d(0, 30px, 0);
+  opacity: 0;
 }
-.skills-line--lvl3 {
-  width: 336px;
-  height: 3px;
-  background-color: #10c9c3;
-}
-.skills-line--lvl4 {
-  width: 36px;
-  height: 3px;
-  background-color: #10c9c3;
+#skills.active {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 .works {
   display: flex;
@@ -173,37 +206,7 @@ nav a:hover {
   border: 1px solid black;
   margin-bottom: 30px;
 }
-.motivation {
-  background-color: #10c9c3;
-}
-.motivation-text {
-  width: 800px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.motivation p {
-  max-width: 707px;
-  color: #ffffff;
-  font-family: Montserrat;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 36px;
-  text-align: center;
-  padding-top: 178px;
-  margin-bottom: 35px;
-}
-.motivation h6 {
-  max-width: 707px;
-  color: #ffffff;
-  font-family: Montserrat;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 36px;
-  text-align: center;
-  text-transform: uppercase;
-  padding-bottom: 179px;
-}
+
 footer {
   background-color: #141414;
 }
@@ -215,8 +218,8 @@ footer {
 .contact-name {
   width: 155px;
   height: 18px;
-  color: #ffffff;
-  font-family: Montserrat;
+  color: #bcbcbc;
+  font-family: "Montserrat";
   font-size: 18px;
   font-weight: 500;
 }
@@ -224,23 +227,39 @@ footer {
   width: 153px;
   color: #bcbcbc;
   font-family: "Nunito Sans";
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
 }
+.contact-mail {
+  display: block;
+  color: #bcbcbc;
+  font-family: "Nunito Sans";
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.github {
+  display: block;
+  margin-top: 10px;
+}
+.github img {
+  width: 30px;
+  height: 30px;
+}
 
-.body {
+.wrapper-body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: #333;
+  background: hsl(240, 7%, 65%);
   display: flex;
   justify-content: center;
-  align-items: center;
   font-family: consolas;
 }
 
 .container {
-  width: 1000px;
+  width: 1170px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -268,7 +287,6 @@ footer {
 }
 
 .container .card:hover .face.face1 {
-  background: #ff0057;
   transform: translateY(0);
 }
 
@@ -282,15 +300,8 @@ footer {
 }
 
 .container .card .face.face1 .content img {
-  max-width: 100px;
-}
-
-.container .card .face.face1 .content h3 {
-  margin: 10px 0 0;
-  padding: 0;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5em;
+  max-width: 100%;
+  height: 100%;
 }
 
 .container .card .face.face2 {
@@ -299,7 +310,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
   transform: translateY(-100px);
@@ -322,6 +333,7 @@ footer {
   color: #333;
   padding: 5px;
   border: 1px solid #333;
+  text-transform: uppercase;
 }
 
 .container .card .face.face2 .content a:hover {
@@ -376,7 +388,7 @@ footer {
 .menu-button:hover path,
 .menu-button:focus path,
 .menu-button:active path {
-  stroke: #10c9c3;
+  stroke: hsl(200, 53%, 54%);
 }
 
 .menu-icon.is-active path:nth-child(1) {
@@ -404,7 +416,7 @@ footer {
   height: 30px;
   text-align: center;
   line-height: 30px;
-  background: #10c9c3;
+  background: hsl(200, 53%, 54%);
   color: #444;
   cursor: pointer;
   border-radius: 2px;
@@ -426,7 +438,9 @@ footer {
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #fbfbfb url("//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif") no-repeat center center;
+  background: #fbfbfb
+    url("//cdnjs.cloudflare.com/ajax/libs/file-uploader/3.7.0/processing.gif")
+    no-repeat center center;
 }
 
 .visible {
@@ -441,11 +455,11 @@ footer {
   transition: visibility 0s 2s, opacity 2s linear;
 }
 
-@media screen and (max-width:530px){
-  menu nav{
+@media screen and (max-width: 530px) {
+  menu nav {
     display: none;
   }
-  .menu2{
+  .menu2 {
     display: block;
   }
 }
