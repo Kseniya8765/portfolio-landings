@@ -417,7 +417,7 @@ footer {
   transform: rotate(-45deg);
 }
 
-.back_to_top {
+/*.back_to_top {
   position: fixed;
   bottom: 80px;
   right: 40px;
@@ -439,7 +439,7 @@ footer {
 
 .back_to_top-show {
   display: block;
-}
+}*/
 #preloader {
   position: fixed;
   left: 0;
@@ -477,6 +477,15 @@ footer {
   .text {
     margin-top: 100px;
     padding-bottom: 20px;
+  }
+  .container .card .face.face1 {
+    transform: translateY(0px);
+  }
+  .container .card .face.face2 {
+    transform: translateY(0px);
+  }
+  .card{
+    margin-bottom: 25px;
   }
 }
 @media screen and (max-width: 730px){

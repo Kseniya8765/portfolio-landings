@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
   const goTopBtn = document.querySelector(".back_to_top");
 
   window.addEventListener("scroll", trackScroll);
@@ -22,7 +22,7 @@
       setTimeout(backToTop, 0);
     }
   }
-})();
+})();*/
 
 function loadData() {
   return new Promise((resolve) => {
