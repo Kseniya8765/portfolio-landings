@@ -478,15 +478,6 @@ footer {
     margin-top: 100px;
     padding-bottom: 20px;
   }
-  .container .card .face.face1 {
-    transform: translateY(0px);
-  }
-  .container .card .face.face2 {
-    transform: translateY(0px);
-  }
-  .card{
-    margin-bottom: 25px;
-  }
 }
 @media screen and (max-width: 730px){
   .container{
@@ -512,7 +503,4 @@ footer {
   .contact-tel{
     margin-top: 30px;
   }
-}
-@media screen and (max-width: 380px){
- 
 }
