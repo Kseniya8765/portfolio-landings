@@ -263,7 +263,6 @@ footer {
 }
 
 .container {
-  width: 1170px;
   position: relative;
   display: flex;
   justify-content: space-between;
