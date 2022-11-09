@@ -1,86 +1,62 @@
-/*(function () {
-  const goTopBtn = document.querySelector(".back_to_top");
 
-  window.addEventListener("scroll", trackScroll);
-  goTopBtn.addEventListener("click", backToTop);
+/*===== MENU SHOW =====*/
+const showMenu = (toggleId, navId) => {
+  const toggle = document.getElementById(toggleId),
+    nav = document.getElementById(navId);
 
-  function trackScroll() {
-    const scrolled = window.pageYOffset;
-    const coords = document.documentElement.clientHeight;
-
-    if (scrolled > coords) {
-      goTopBtn.classList.add("back_to_top-show");
-    }
-    if (scrolled < coords) {
-      goTopBtn.classList.remove("back_to_top-show");
-    }
-  }
-
-  function backToTop() {
-    if (window.pageYOffset > 0) {
-      window.scrollBy(0, -80);
-      setTimeout(backToTop, 0);
-    }
-  }
-})();*/
-
-function loadData() {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
-}
-loadData().then(() => {
-  let preloaderEl = document.getElementById("preloader");
-  preloaderEl.classList.add("hidden");
-  preloaderEl.classList.remove("visible");
-});
-
-$(document).ready(function () {
-  $(".menu2").click(function () {
-    $(this).toggleClass("active");
-  });
-});
-
-function updateMenuButton() {
-  $(".js-menu-button").find(".menu-icon").toggleClass("is-active");
-}
-
-$(document).ready(function () {
-  $(".js-menu-button").click(function (e) {
-    e.preventDefault();
-    updateMenuButton();
-  });
-});
-//scroll animation
-let isScrolling = false;
-
-window.addEventListener("scroll", throttleScroll, false);
-
-function throttleScroll(e) {
-  if (isScrolling === false) {
-    window.requestAnimationFrame(function () {
-      scrolling(e);
-      isScrolling = false;
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("show");
     });
   }
-  isScrolling = true;
+};
+showMenu("nav-toggle", "nav-menu");
+
+/*==================== REMOVE MENU MOBILE ====================*/
+const navLink = document.querySelectorAll(".nav__link");
+
+function linkAction() {
+  const navMenu = document.getElementById("nav-menu");
+  navMenu.classList.remove("show");
 }
+navLink.forEach((n) => n.addEventListener("click", linkAction));
 
-document.addEventListener("DOMContentLoaded", scrolling, false);
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+const sections = document.querySelectorAll("section[id]");
 
-const skillBox = document.querySelector("#skills");
+function scrollActive() {
+  const scrollY = window.pageYOffset;
 
-function scrolling(e) {
-  if (isFullyVisible(skillBox)) {
-    skillBox.classList.add("active");
-  }
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    const sectionId = current.getAttribute("id");
 
-  function isFullyVisible(el) {
-    var elementBoundary = el.getBoundingClientRect();
-
-    var top = elementBoundary.top;
-    var bottom = elementBoundary.bottom;
-
-    return top >= 0 && bottom <= window.innerHeight;
-  }
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document
+        .querySelector(".nav__menu a[href*=" + sectionId + "]")
+        .classList.add("active");
+    } else {
+      document
+        .querySelector(".nav__menu a[href*=" + sectionId + "]")
+        .classList.remove("active");
+    }
+  });
 }
+window.addEventListener("scroll", scrollActive);
+
+/*===== SCROLL REVEAL ANIMATION =====*/
+const sr = ScrollReveal({
+  origin: "top",
+  distance: "60px",
+  duration: 2000,
+  delay: 200,
+  //     reset: true
+});
+
+sr.reveal(".home__data, .about__img, .skills__subtitle, .skills__text", {});
+sr.reveal(".home__img, .about__subtitle, .about__text, .skills__img", {
+  delay: 400,
+});
+sr.reveal(".home__social-icon", { interval: 200 });
+sr.reveal(".skills__data, .work__img, .contact__input", { interval: 200 });
