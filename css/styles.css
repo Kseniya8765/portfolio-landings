@@ -248,6 +248,7 @@ img {
 /*BUTTONS*/
 .button {
   display: inline-block;
+  text-align: center;
   background-color: var(--first-color);
   color: #fff;
   padding: .75rem 2.5rem;
@@ -346,7 +347,7 @@ img {
 }
 
 .skills__ux {
-  width: 85%;
+  width: 45%;
 }
 
 .skills__img {
